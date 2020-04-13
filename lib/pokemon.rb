@@ -44,7 +44,7 @@ sql = <<-SQL
   @id = db.execute("SELECT last_insert_rowid() FROM pokemon")[0][0]
 end
 
-def self.find(id,name)
+def self.find(id,db)
     sql = "SELECT * FROM pokemon WHERE id = ?"
     result = db.execute(sql, id)[0]
     Pokemon.new(id:result[0],name:result[1],type:result[2], db:result[3])
